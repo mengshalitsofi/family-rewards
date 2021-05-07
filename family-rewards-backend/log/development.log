@@ -568,3 +568,39 @@ Processing by PricesController#index as */*
 Completed 200 OK in 23ms (Views: 20.3ms | ActiveRecord: 2.0ms | Allocations: 4470)
 
 
+Started GET "/prices" for ::1 at 2021-05-07 16:06:51 -0700
+Processing by PricesController#index as */*
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mPrice Load (0.1ms)[0m  [1m[34mSELECT "prices".* FROM "prices"[0m
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 1]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 2]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 3]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.0ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 4]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 5]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+Completed 200 OK in 43ms (Views: 39.9ms | ActiveRecord: 1.7ms | Allocations: 9861)
+
+
+Started GET "/prices" for ::1 at 2021-05-07 16:06:52 -0700
+Processing by PricesController#index as */*
+  [1m[36mPrice Load (0.2ms)[0m  [1m[34mSELECT "prices".* FROM "prices"[0m
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 1]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 2]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 3]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 4]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.2ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 5]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+Completed 200 OK in 15ms (Views: 12.3ms | ActiveRecord: 0.8ms | Allocations: 4470)
+
+
