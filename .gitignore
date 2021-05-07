@@ -69,3 +69,5 @@ yarn-debug.log*
 family-rewards-backend/tmp/cache/bootsnap/load-path-cache
 family-rewards-backend/tmp/cache/bootsnap/compile-cache/44/2372743d56f0db
 family-rewards-backend/tmp/cache/bootsnap/compile-cache/68/ce99d2062ead30
+family-rewards-backend/tmp/cache/bootsnap/load-path-cache
+family-rewards-backend/log/development.log

@@ -3,19 +3,28 @@ class Price {
     static allPrices = []
   
     constructor(price) {
-        this.description = price.attributes.description
+        this.description = price.description
+        this.price = price.price
         this.id = price.id
-        this.actions = price.attributes.actions.map(action => new Action(action))
+        this.actions = price.actions.map(action => new Action(action))
         Price.allPrices.push(this)
     }
   
     renderPrice() {
-      let div = document.getElementById('priceContainer')
-      let pgh = document.createElement("p")
-      pgh.id = this.id
-      pgh.innerText = this.name
-      pgh.addEventListener('click', this.showPrice.bind(this))
-      div.append(pgh)
+      let table = document.getElementById('priceTable')
+      let row = document.createElement("tr")
+      row.id = "row_" + this.id
+      let descriptionCell = document.createElement("td")
+      descriptionCell.id = "desc_" + this.id
+      descriptionCell.innerText = this.description
+      row.appendChild(descriptionCell)
+      let priceCell = document.createElement("td")
+      priceCell.id = "price_" + this.id
+      priceCell.innerText = this.price
+      row.appendChild(priceCell)
+      //innerText = this.description
+      //pgh.addEventListener('click', this.showPrice.bind(this))
+      table.appendChild(row)
     }
     
     showPrice() {
@@ -28,8 +37,8 @@ class Price {
       let btn = document.createElement("input")
       btn.type = "submit"
       btn.innerText = "Submit"
-      input.id = "content"
-      label.innerText = "Content:"
+      input.id = "timestamp"
+      label.innerText = "Timestamp:"
       form.id = "actionForm"
       ul.id = "priceUl"
       form.append(label)
@@ -87,13 +96,13 @@ class Price {
       fetch("http://localhost:3000/prices")
       .then(r => r.json())
       .then(prices => {
-        if (prices.data) {
-          for (let price of prices.data) {
+        if (!!prices) {
+          for (let price of prices) {
             let newPrice = new Price(price)
           }
           this.renderPrices()
         } else {
-          throw new Error(prices.data)
+          throw new Error(prices)
         }
   
       }).catch(err => alert(err))
@@ -116,8 +125,8 @@ class Price {
       fetch("http://localhost:3000/prices", options)
       .then(r => r.json())
       .then(priceObj => {
-        if (priceObj.data) {
-          let newPrice = new Price(priceObj.data)
+        if (!!priceObj) {
+          let newPrice = new Price(priceObj)
           newPrice.renderPrice()
         } else {
           throw new Error(priceObj.message)
