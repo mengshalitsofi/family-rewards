@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2) do
 
   create_table "actions", force: :cascade do |t|
     t.bigint "price_id", null: false
+    t.datetime "action_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["price_id"], name: "index_actions_on_price_id"
