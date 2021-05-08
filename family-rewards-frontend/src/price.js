@@ -13,68 +13,46 @@ class Price {
     }
   
     static displayBalance() {
-        document.getElementById("balanceDiv").innerHTML = Price.balance;
+      const balanceDiv = document.getElementById("balanceDiv")
+      balanceDiv.innerHTML = "" // delete all child element
+      balanceDiv.appendChild(createHeartsElement(Price.balance))
     }
 
     renderPrice() {
-      let table = document.getElementById('priceTable')
-      let row = document.createElement("tr")
+      let container = document.getElementById('priceContainer')
+
+      let div = document.createElement("div")
+      div.id = "div_" + this.id;
+      container.appendChild(div);
+
+      let row = document.createElement("span")
+      row.className = "priceRow"
       row.id = "row_" + this.id
-      let descriptionCell = document.createElement("td")
-      descriptionCell.id = "desc_" + this.id
-      descriptionCell.innerText = this.description
-      row.appendChild(descriptionCell)
-      let priceCell = document.createElement("td")
-      priceCell.id = "price_" + this.id
-      priceCell.innerText = this.price
-      row.appendChild(priceCell)
-      let deleteCell = document.createElement("td")
+      row.innerHTML = this.description + "  ";
+      div.appendChild(row);
+
+      div.appendChild(createHeartsElement(this.price))
+      
+      let deleteCell = document.createElement("span")
       deleteCell.id = "delete_" + this.id
-      deleteCell.innerText = "Delete"
+      deleteCell.className = "delete"
+      deleteCell.innerText = "  (Delete)"
       deleteCell.addEventListener('click', this.deletePrice.bind(this))
-      row.appendChild(deleteCell)
-      let addActionCell = document.createElement("td")
-      addActionCell.id = "addAction_" + this.id
-      addActionCell.innerText = "+"
+      div.appendChild(deleteCell)
+
+      let addActionCell = document.createElement("span")
+      addActionCell.id = "addAction_" + this.id      
+      addActionCell.innerText = "  (+)"
       addActionCell.addEventListener('click', this.submitAction.bind(this))
-      row.appendChild(addActionCell)
+      div.appendChild(addActionCell)
       
       const ul = document.createElement("ul")
-      ul.id = "ul_" + this.id;
-      for (let action of this.actions) {
-        ul.innerHTML += action.actionHTML()
-      }      
-      descriptionCell.appendChild(ul)
+      ul.id = "ul_" + this.id
+      div.appendChild(ul)
 
-      table.appendChild(row)
-    }
-    
-    showPrice() {
-      let container = document.getElementById('container')
-      let h3 = document.createElement('h3')
-      let ul = document.createElement("ul")
-      let form = document.createElement("form")
-      let label = document.createElement("label")
-      let input = document.createElement('input')
-      let btn = document.createElement("input")
-      btn.type = "submit"
-      btn.innerText = "Submit"
-      input.id = "timestamp"
-      label.innerText = "Timestamp:"
-      form.id = "actionForm"
-      ul.id = "priceUl"
-      form.append(label)
-      form.append(input)
-      form.append(btn)
-      container.innerHTML = ""
-      h3.innerText = this.name
-      container.append(h3)
-      container.append(ul)
       for (let action of this.actions) {
-        ul.innerHTML += action.actionHTML()
-      }
-      container.append(form)
-      form.addEventListener('submit', this.submitAction.bind(this))
+        ul.appendChild(action.createElement())
+      }      
     }
   
     async deletePrice(event) {
@@ -89,7 +67,7 @@ class Price {
           await fetch("http://localhost:3000/prices/" + this.id, options)
           
           // Remove from the DOM
-          const rowToDelete = document.getElementById("row_" + this.id);
+          const rowToDelete = document.getElementById("div_" + this.id);
           rowToDelete.remove();
 
           // Update the balance
@@ -117,7 +95,7 @@ class Price {
         await response.json()
 
         const ul = document.getElementById("ul_" + this.id);
-        ul.innerHTML += new Action(action.new_action).actionHTML()
+        ul.appendChild(new Action(action.new_action).createElement())
 
         // Update balance
         Price.balance += this.price;
@@ -128,6 +106,32 @@ class Price {
   
     }
   
+    static async removeAction(priceId, actionId) {
+      // Remove from the backend
+      event.preventDefault()
+      let options = {
+        method: "DELETE",
+        headers: {"Content-Type": "application/json", "Accept": "application/json"},
+      }
+
+      try {
+        await fetch("http://localhost:3000/actions/" + actionId, options)
+        
+        // Remove the item from allPrices
+        const price = Price.allPrices.find(p => p.id === priceId);
+        price.actions = price.actions.filter(a => a.id !== actionId);
+
+        // Remove the item from the DOM
+        document.getElementById("li_" + actionId).remove();
+        
+        // Update the balance
+        Price.balance -= price.price;
+        Price.displayBalance();
+      } catch(err) {
+        alert(err)
+      }        
+    }
+
     static renderPrices() {
       for (let price of this.allPrices) {
           price.renderPrice()

@@ -3,25 +3,14 @@ const form = document.getElementById('priceForm')
 const mainContainer = document.getElementById('container')
 
 form.addEventListener('submit', Price.createPrice)
-header.addEventListener('click', reset)
 
-function reset(){
-  mainContainer.innerHTML = ''
-  mainContainer.innerHTML += `<form id="priceForm">
-    <label for="">Name:</label>
-    <input type="text" id="priceDescription">
-    <input type="submit" >
-  </form>`
-  addListeners()
-}
-
-function addListeners() {
-    const form = document.getElementById('priceForm')
-    const div = document.createElement('div')
-    div.id = "priceContainer"
-    mainContainer.append(div)
-    form.addEventListener('submit', Price.createPrice)
-    Price.renderPrices()
+function createHeartsElement(amount) {
+    let hearts = document.createElement("span")
+    hearts.className = amount < 0 ? "pricePriceNegative" : "pricePricePositive"
+    for (let i = 0; i < Math.abs(amount); i++) {
+        hearts.innerHTML += "&#10084;"
+    }
+    return hearts
 }
 
 Price.fetchPrices()

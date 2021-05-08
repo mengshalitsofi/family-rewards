@@ -1,7 +1,7 @@
 class PricesController < ApplicationController
 
     def index
-      render json: Price.all, include: [actions: {only: [:timestamp]}], except: [:created_at, :updated_at]
+      render json: Price.all, include: [actions: {only: [:timestamp, :id, :price_id]}], except: [:created_at, :updated_at]
     end
   
     def create

@@ -9,6 +9,12 @@ class ActionsController < ApplicationController
         end
     end
   
+    def destroy
+        action = Action.find_by(id: params[:id])
+        action.destroy
+        render json: {message: "success"}
+    end
+
     private
   
     def action_params
