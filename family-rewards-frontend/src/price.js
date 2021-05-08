@@ -1,15 +1,21 @@
 class Price {
 
     static allPrices = []
-  
+    static balance = 0
+
     constructor(price) {
         this.description = price.description
-        this.price = price.price
+        this.price = parseInt(price.price, 10)
         this.id = price.id
         this.actions = price.actions.map(action => new Action(action))
         Price.allPrices.push(this)
+        Price.balance += this.price * this.actions.length
     }
   
+    static displayBalance() {
+        document.getElementById("balanceDiv").innerHTML = Price.balance;
+    }
+
     renderPrice() {
       let table = document.getElementById('priceTable')
       let row = document.createElement("tr")
@@ -22,8 +28,24 @@ class Price {
       priceCell.id = "price_" + this.id
       priceCell.innerText = this.price
       row.appendChild(priceCell)
-      //innerText = this.description
-      //pgh.addEventListener('click', this.showPrice.bind(this))
+      let deleteCell = document.createElement("td")
+      deleteCell.id = "delete_" + this.id
+      deleteCell.innerText = "Delete"
+      deleteCell.addEventListener('click', this.deletePrice.bind(this))
+      row.appendChild(deleteCell)
+      let addActionCell = document.createElement("td")
+      addActionCell.id = "addAction_" + this.id
+      addActionCell.innerText = "+"
+      addActionCell.addEventListener('click', this.submitAction.bind(this))
+      row.appendChild(addActionCell)
+      
+      const ul = document.createElement("ul")
+      ul.id = "ul_" + this.id;
+      for (let action of this.actions) {
+        ul.innerHTML += action.actionHTML()
+      }      
+      descriptionCell.appendChild(ul)
+
       table.appendChild(row)
     }
     
@@ -55,30 +77,51 @@ class Price {
       form.addEventListener('submit', this.submitAction.bind(this))
     }
   
+    async deletePrice(event) {
+        // Delete from the backend
+        event.preventDefault()
+        let options = {
+          method: "DELETE",
+          headers: {"Content-Type": "application/json", "Accept": "application/json"},
+        }
+
+        try {
+          await fetch("http://localhost:3000/prices/" + this.id, options)
+          
+          // Remove from the DOM
+          const rowToDelete = document.getElementById("row_" + this.id);
+          rowToDelete.remove();
+
+          // Update the balance
+          Price.balance -= this.price * this.actions.length
+          Price.displayBalance();
+
+        } catch(err) {
+          alert(err)
+        }        
+    }
+
     async submitAction(){
       event.preventDefault()
-      let timestamp = document.getElementById("timestamp").value
+      let timestamp = new Date().toISOString()
       let price_id = this.id
-      let action = {action: {timestamp, price_id}}
+      let action = {new_action: {timestamp, price_id}}
       let options = {
         method: "POST",
         headers: {"Content-Type": "application/json", "Accept": "application/json"},
         body: JSON.stringify(action)
       }
-  
-      document.getElementById("timestamp").value = ""
+
       try {
         let response = await fetch("http://localhost:3000/actions", options)
-        let action = await response.json()
-          if (action.data) {
-            let newAction = new Action(action.data)
-            let price = Price.allPrices.find(price => parseInt(price.id) === newAction.priceId)
-            let ul = document.querySelector("ul")
-            price.actions.push(newAction)
-            ul.innerHTML += newAction.actionHTML()
-          } else {
-            throw new Error(action.message)
-          }
+        await response.json()
+
+        const ul = document.getElementById("ul_" + this.id);
+        ul.innerHTML += new Action(action.new_action).actionHTML()
+
+        // Update balance
+        Price.balance += this.price;
+        Price.displayBalance();
       } catch(err) {
         alert(err)
       }
@@ -88,8 +131,8 @@ class Price {
     static renderPrices() {
       for (let price of this.allPrices) {
           price.renderPrice()
-  
       }
+      Price.displayBalance();
     }
   
     static fetchPrices() {
@@ -111,13 +154,14 @@ class Price {
     static createPrice() {
       event.preventDefault()
       const description = document.getElementById('priceDescription').value
+      const price = document.getElementById('pricePrice').value
       const options = {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "Accept": "application/json"
         },
-        body: JSON.stringify({price: {description}})
+        body: JSON.stringify({price: {description, price}})
       }
   
       document.getElementById('priceDescription').value = ""
@@ -134,6 +178,4 @@ class Price {
   
       }).catch((err) => alert(err))
     }
-  
-  
   }

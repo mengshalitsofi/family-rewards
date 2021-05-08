@@ -1,13 +1,13 @@
 class Action {
 
     constructor(action){
-      this.timestamp = action.attributes.timestamp
+      this.timestamp = action.timestamp
       this.id = action.id
-      this.priceId = action.attributes.price_id
+      this.priceId = action.price_id
     }
   
     actionHTML() {
-      return `<li id="${this.id}">${this.timestamp}</li>`
+      return `<li id="${this.id}">${new Date(this.timestamp).toLocaleString()} (Delete)</li>`
     }
   
   

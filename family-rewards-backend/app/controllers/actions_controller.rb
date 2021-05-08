@@ -12,7 +12,7 @@ class ActionsController < ApplicationController
     private
   
     def action_params
-      params.require(:action).permit(:timestamp, :price_id)
+      params.require(:new_action).permit(:timestamp, :price_id)
     end
   
   end

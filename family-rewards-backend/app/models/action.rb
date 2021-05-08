@@ -1,4 +1,4 @@
 class Action < ApplicationRecord
     belongs_to :price
-    validates :action_date, presence: true
+    validates :timestamp, presence: true
 end
