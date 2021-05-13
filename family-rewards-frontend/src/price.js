@@ -12,7 +12,7 @@ class Price {
         Price.balance += this.price * this.actions.length
     }
   
-    static displayBalance() {
+    static renderBalance() {
       const balanceDiv = document.getElementById("balanceDiv")
       balanceDiv.innerHTML = "" // delete all child element
       balanceDiv.appendChild(createHeartsElement(Price.balance))
@@ -28,11 +28,18 @@ class Price {
       let row = document.createElement("span")
       row.className = "priceRow"
       row.id = "row_" + this.id
-      row.innerHTML = this.description + "  ";
+      row.innerHTML = this.description + "  "
       div.appendChild(row);
 
       div.appendChild(createHeartsElement(this.price))
       
+      let editCell = document.createElement("span")
+      editCell.id = "edit_" + this.id
+      editCell.className = "delete"
+      editCell.innerText = "  (Edit)"
+      editCell.addEventListener('click', this.showPrice.bind(this))
+      div.appendChild(editCell)
+
       let deleteCell = document.createElement("span")
       deleteCell.id = "delete_" + this.id
       deleteCell.className = "delete"
@@ -55,6 +62,53 @@ class Price {
       }      
     }
   
+    showPrice() {
+      const span = document.getElementById("row_" + this.id)      
+      span.innerHTML = ""; 
+
+      let form = document.createElement("form")
+      let input = document.createElement('input')      
+      let btn = document.createElement("input")
+      btn.type = "submit"
+      btn.innerText = "Submit"
+      input.id = "content"
+      input.value = this.description
+      form.id = "priceForm"
+      form.append(input)
+      form.append(btn)
+      span.append(form)
+      form.addEventListener('submit', this.submitPrice.bind(this))      
+    }
+
+    async submitPrice() {
+      event.preventDefault()
+      let description = document.getElementById("content").value
+      let price_id = this.id
+      let priceObj = {price: {description}}
+      let options = {
+        method: "PATCH",
+        headers: {"Content-Type": "application/json", "Accept": "application/json"},
+        body: JSON.stringify(priceObj)
+      }
+  
+      document.getElementById("content").value = ""
+      try {
+        let response = await fetch("http://localhost:3000/prices/" + price_id, options)
+        let priceJson = await response.json()
+          if (priceJson) {
+            document.getElementById("priceContainer").innerHTML = ""
+            let price = Price.allPrices.find(p => parseInt(p.id) === priceJson.id)
+            price.description = priceJson.description
+            Price.renderPrices();
+            Price.renderBalance();
+          } else {
+            throw new Error(priceJson.message)
+          }
+      } catch(err) {
+        alert(err)
+      }      
+    }
+
     async deletePrice(event) {
         // Delete from the backend
         event.preventDefault()
@@ -72,7 +126,7 @@ class Price {
 
           // Update the balance
           Price.balance -= this.price * this.actions.length
-          Price.displayBalance();
+          Price.renderBalance();
 
         } catch(err) {
           alert(err)
@@ -99,7 +153,8 @@ class Price {
 
         // Update balance
         Price.balance += this.price;
-        Price.displayBalance();
+        this.actions.push(action);
+        Price.renderBalance();
       } catch(err) {
         alert(err)
       }
@@ -126,7 +181,7 @@ class Price {
         
         // Update the balance
         Price.balance -= price.price;
-        Price.displayBalance();
+        Price.renderBalance();
       } catch(err) {
         alert(err)
       }        
@@ -136,7 +191,7 @@ class Price {
       for (let price of this.allPrices) {
           price.renderPrice()
       }
-      Price.displayBalance();
+      Price.renderBalance();
     }
   
     static fetchPrices() {
@@ -173,7 +228,7 @@ class Price {
       fetch("http://localhost:3000/prices", options)
       .then(r => r.json())
       .then(priceObj => {
-        if (!!priceObj) {
+        if (priceObj.id) {
           let newPrice = new Price(priceObj)
           newPrice.renderPrice()
         } else {

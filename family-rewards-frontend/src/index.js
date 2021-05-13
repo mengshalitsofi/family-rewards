@@ -1,6 +1,4 @@
-const header = document.getElementById("header")
 const form = document.getElementById('priceForm')
-const mainContainer = document.getElementById('container')
 
 form.addEventListener('submit', Price.createPrice)
 
