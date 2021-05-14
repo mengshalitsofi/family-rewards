@@ -11529,3 +11529,867 @@ Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.1ms | Allocations: 8
 NoMethodError (undefined method `destroy' for nil:NilClass):
   
 app/controllers/actions_controller.rb:14:in `destroy'
+Started DELETE "/actions/2" for ::1 at 2021-05-13 12:24:22 -0700
+Processing by ActionsController#destroy as JSON
+  Parameters: {"id"=>"2"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/actions_controller.rb:13:in `destroy'
+  [1m[36mAction Load (0.2ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:13:in `destroy'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/actions_controller.rb:14:in `destroy'
+  [1m[36mAction Destroy (0.2ms)[0m  [1m[31mDELETE FROM "actions" WHERE "actions"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/actions_controller.rb:14:in `destroy'
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/actions_controller.rb:14:in `destroy'
+Completed 200 OK in 9ms (Views: 0.1ms | ActiveRecord: 3.5ms | Allocations: 4505)
+
+
+Started DELETE "/actions/3" for ::1 at 2021-05-13 12:24:24 -0700
+Processing by ActionsController#destroy as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:13:in `destroy'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/actions_controller.rb:14:in `destroy'
+  [1m[36mAction Destroy (0.3ms)[0m  [1m[31mDELETE FROM "actions" WHERE "actions"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/actions_controller.rb:14:in `destroy'
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/actions_controller.rb:14:in `destroy'
+Completed 200 OK in 7ms (Views: 0.1ms | ActiveRecord: 2.5ms | Allocations: 3424)
+
+
+Started DELETE "/prices/1" for ::1 at 2021-05-13 12:24:28 -0700
+Processing by PricesController#destroy as JSON
+  Parameters: {"id"=>"1", "price"=>{}}
+  [1m[36mPrice Load (0.2ms)[0m  [1m[34mSELECT "prices".* FROM "prices" WHERE "prices"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/prices_controller.rb:23:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/prices_controller.rb:24:in `destroy'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 1]]
+  ↳ app/controllers/prices_controller.rb:24:in `destroy'
+  [1m[36mAction Destroy (0.2ms)[0m  [1m[31mDELETE FROM "actions" WHERE "actions"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/prices_controller.rb:24:in `destroy'
+  [1m[36mPrice Destroy (0.1ms)[0m  [1m[31mDELETE FROM "prices" WHERE "prices"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/prices_controller.rb:24:in `destroy'
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/prices_controller.rb:24:in `destroy'
+Completed 200 OK in 11ms (Views: 0.1ms | ActiveRecord: 3.4ms | Allocations: 5871)
+
+
+Started DELETE "/prices/2" for ::1 at 2021-05-13 12:24:29 -0700
+Processing by PricesController#destroy as JSON
+  Parameters: {"id"=>"2", "price"=>{}}
+  [1m[36mPrice Load (0.1ms)[0m  [1m[34mSELECT "prices".* FROM "prices" WHERE "prices"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/prices_controller.rb:23:in `destroy'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/prices_controller.rb:24:in `destroy'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 2]]
+  ↳ app/controllers/prices_controller.rb:24:in `destroy'
+  [1m[36mAction Destroy (0.2ms)[0m  [1m[31mDELETE FROM "actions" WHERE "actions"."id" = ?[0m  [["id", 5]]
+  ↳ app/controllers/prices_controller.rb:24:in `destroy'
+  [1m[36mAction Destroy (0.1ms)[0m  [1m[31mDELETE FROM "actions" WHERE "actions"."id" = ?[0m  [["id", 6]]
+  ↳ app/controllers/prices_controller.rb:24:in `destroy'
+  [1m[36mPrice Destroy (0.1ms)[0m  [1m[31mDELETE FROM "prices" WHERE "prices"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/prices_controller.rb:24:in `destroy'
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/prices_controller.rb:24:in `destroy'
+Completed 200 OK in 11ms (Views: 0.1ms | ActiveRecord: 3.6ms | Allocations: 5413)
+
+
+Started DELETE "/prices/3" for ::1 at 2021-05-13 12:24:29 -0700
+Processing by PricesController#destroy as JSON
+  Parameters: {"id"=>"3", "price"=>{}}
+  [1m[36mPrice Load (0.1ms)[0m  [1m[34mSELECT "prices".* FROM "prices" WHERE "prices"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/prices_controller.rb:23:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/prices_controller.rb:24:in `destroy'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 3]]
+  ↳ app/controllers/prices_controller.rb:24:in `destroy'
+  [1m[36mAction Destroy (0.2ms)[0m  [1m[31mDELETE FROM "actions" WHERE "actions"."id" = ?[0m  [["id", 7]]
+  ↳ app/controllers/prices_controller.rb:24:in `destroy'
+  [1m[36mAction Destroy (0.1ms)[0m  [1m[31mDELETE FROM "actions" WHERE "actions"."id" = ?[0m  [["id", 14]]
+  ↳ app/controllers/prices_controller.rb:24:in `destroy'
+  [1m[36mPrice Destroy (0.1ms)[0m  [1m[31mDELETE FROM "prices" WHERE "prices"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/prices_controller.rb:24:in `destroy'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/prices_controller.rb:24:in `destroy'
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 2.6ms | Allocations: 6482)
+
+
+Started DELETE "/prices/4" for ::1 at 2021-05-13 12:24:30 -0700
+Processing by PricesController#destroy as JSON
+  Parameters: {"id"=>"4", "price"=>{}}
+  [1m[36mPrice Load (0.1ms)[0m  [1m[34mSELECT "prices".* FROM "prices" WHERE "prices"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/prices_controller.rb:23:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/prices_controller.rb:24:in `destroy'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 4]]
+  ↳ app/controllers/prices_controller.rb:24:in `destroy'
+  [1m[36mAction Destroy (0.2ms)[0m  [1m[31mDELETE FROM "actions" WHERE "actions"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/prices_controller.rb:24:in `destroy'
+  [1m[36mPrice Destroy (0.1ms)[0m  [1m[31mDELETE FROM "prices" WHERE "prices"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/prices_controller.rb:24:in `destroy'
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/prices_controller.rb:24:in `destroy'
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 3.3ms | Allocations: 4765)
+
+
+Started GET "/prices" for ::1 at 2021-05-13 12:24:33 -0700
+Processing by PricesController#index as */*
+  [1m[36mPrice Load (0.1ms)[0m  [1m[34mSELECT "prices".* FROM "prices"[0m
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 603)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPrice Create (0.2ms)[0m  [1m[32mINSERT INTO "prices" ("description", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["description", "Clean room"], ["price", 2.0], ["created_at", "2021-05-13 19:24:52.460037"], ["updated_at", "2021-05-13 19:24:52.460037"]]
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPrice Create (0.1ms)[0m  [1m[32mINSERT INTO "prices" ("description", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["description", "Practice reading"], ["price", 3.0], ["created_at", "2021-05-13 19:24:52.465873"], ["updated_at", "2021-05-13 19:24:52.465873"]]
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPrice Create (0.1ms)[0m  [1m[32mINSERT INTO "prices" ("description", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["description", "Get dressed by yourself"], ["price", 1.0], ["created_at", "2021-05-13 19:24:52.471345"], ["updated_at", "2021-05-13 19:24:52.471345"]]
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPrice Create (0.1ms)[0m  [1m[32mINSERT INTO "prices" ("description", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["description", "Buy Barbie"], ["price", -5.0], ["created_at", "2021-05-13 19:24:52.475987"], ["updated_at", "2021-05-13 19:24:52.475987"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPrice Create (0.2ms)[0m  [1m[32mINSERT INTO "prices" ("description", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["description", "Watch a movie"], ["price", -2.0], ["created_at", "2021-05-13 19:24:52.480480"], ["updated_at", "2021-05-13 19:24:52.480480"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/prices" for ::1 at 2021-05-13 12:25:03 -0700
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PricesController#index as */*
+  [1m[36mPrice Load (0.1ms)[0m  [1m[34mSELECT "prices".* FROM "prices"[0m
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 10]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.0ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 11]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.0ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 12]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.3ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 13]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 14]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+Completed 200 OK in 21ms (Views: 14.3ms | ActiveRecord: 1.2ms | Allocations: 14396)
+
+
+Started POST "/actions" for ::1 at 2021-05-13 12:25:06 -0700
+Processing by ActionsController#create as JSON
+  Parameters: {"new_action"=>{"timestamp"=>"2021-05-13T19:25:06.799Z", "price_id"=>10}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mPrice Load (0.1ms)[0m  [1m[34mSELECT "prices".* FROM "prices" WHERE "prices"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mAction Create (0.3ms)[0m  [1m[32mINSERT INTO "actions" ("price_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["price_id", 10], ["timestamp", "2021-05-13 19:25:06.799000"], ["created_at", "2021-05-13 19:25:06.841832"], ["updated_at", "2021-05-13 19:25:06.841832"]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 4.3ms | Allocations: 6779)
+
+
+Started POST "/actions" for ::1 at 2021-05-13 12:25:07 -0700
+Processing by ActionsController#create as JSON
+  Parameters: {"new_action"=>{"timestamp"=>"2021-05-13T19:25:07.812Z", "price_id"=>10}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mPrice Load (0.1ms)[0m  [1m[34mSELECT "prices".* FROM "prices" WHERE "prices"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mAction Create (0.3ms)[0m  [1m[32mINSERT INTO "actions" ("price_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["price_id", 10], ["timestamp", "2021-05-13 19:25:07.812000"], ["created_at", "2021-05-13 19:25:07.850374"], ["updated_at", "2021-05-13 19:25:07.850374"]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 2.6ms | Allocations: 4950)
+
+
+Started POST "/actions" for ::1 at 2021-05-13 12:25:08 -0700
+Processing by ActionsController#create as JSON
+  Parameters: {"new_action"=>{"timestamp"=>"2021-05-13T19:25:08.003Z", "price_id"=>10}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mPrice Load (0.1ms)[0m  [1m[34mSELECT "prices".* FROM "prices" WHERE "prices"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mAction Create (0.2ms)[0m  [1m[32mINSERT INTO "actions" ("price_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["price_id", 10], ["timestamp", "2021-05-13 19:25:08.003000"], ["created_at", "2021-05-13 19:25:08.040187"], ["updated_at", "2021-05-13 19:25:08.040187"]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 2.7ms | Allocations: 4925)
+
+
+Started POST "/actions" for ::1 at 2021-05-13 12:25:08 -0700
+Processing by ActionsController#create as JSON
+  Parameters: {"new_action"=>{"timestamp"=>"2021-05-13T19:25:08.341Z", "price_id"=>10}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mPrice Load (0.1ms)[0m  [1m[34mSELECT "prices".* FROM "prices" WHERE "prices"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mAction Create (0.2ms)[0m  [1m[32mINSERT INTO "actions" ("price_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["price_id", 10], ["timestamp", "2021-05-13 19:25:08.341000"], ["created_at", "2021-05-13 19:25:08.377358"], ["updated_at", "2021-05-13 19:25:08.377358"]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 2.1ms | Allocations: 4950)
+
+
+Started POST "/actions" for ::1 at 2021-05-13 12:25:10 -0700
+Processing by ActionsController#create as JSON
+  Parameters: {"new_action"=>{"timestamp"=>"2021-05-13T19:25:10.332Z", "price_id"=>11}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mPrice Load (0.1ms)[0m  [1m[34mSELECT "prices".* FROM "prices" WHERE "prices"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mAction Create (0.2ms)[0m  [1m[32mINSERT INTO "actions" ("price_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["price_id", 11], ["timestamp", "2021-05-13 19:25:10.332000"], ["created_at", "2021-05-13 19:25:10.369526"], ["updated_at", "2021-05-13 19:25:10.369526"]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 2.6ms | Allocations: 3875)
+
+
+Started POST "/actions" for ::1 at 2021-05-13 12:25:11 -0700
+Processing by ActionsController#create as JSON
+  Parameters: {"new_action"=>{"timestamp"=>"2021-05-13T19:25:11.749Z", "price_id"=>13}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mPrice Load (0.1ms)[0m  [1m[34mSELECT "prices".* FROM "prices" WHERE "prices"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mAction Create (0.2ms)[0m  [1m[32mINSERT INTO "actions" ("price_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["price_id", 13], ["timestamp", "2021-05-13 19:25:11.749000"], ["created_at", "2021-05-13 19:25:11.786659"], ["updated_at", "2021-05-13 19:25:11.786659"]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 2.7ms | Allocations: 4930)
+
+
+Started POST "/actions" for ::1 at 2021-05-13 12:25:13 -0700
+Processing by ActionsController#create as JSON
+  Parameters: {"new_action"=>{"timestamp"=>"2021-05-13T19:25:12.975Z", "price_id"=>14}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mPrice Load (0.1ms)[0m  [1m[34mSELECT "prices".* FROM "prices" WHERE "prices"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mAction Create (0.2ms)[0m  [1m[32mINSERT INTO "actions" ("price_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["price_id", 14], ["timestamp", "2021-05-13 19:25:12.975000"], ["created_at", "2021-05-13 19:25:13.012855"], ["updated_at", "2021-05-13 19:25:13.012855"]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 2.6ms | Allocations: 4224)
+
+
+Started POST "/actions" for ::1 at 2021-05-13 12:25:15 -0700
+Processing by ActionsController#create as JSON
+  Parameters: {"new_action"=>{"timestamp"=>"2021-05-13T19:25:15.068Z", "price_id"=>12}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mPrice Load (0.1ms)[0m  [1m[34mSELECT "prices".* FROM "prices" WHERE "prices"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mAction Create (0.2ms)[0m  [1m[32mINSERT INTO "actions" ("price_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["price_id", 12], ["timestamp", "2021-05-13 19:25:15.068000"], ["created_at", "2021-05-13 19:25:15.105455"], ["updated_at", "2021-05-13 19:25:15.105455"]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 3.8ms | Allocations: 3850)
+
+
+Started GET "/prices" for ::1 at 2021-05-13 12:25:19 -0700
+Processing by PricesController#index as */*
+  [1m[36mPrice Load (0.3ms)[0m  [1m[34mSELECT "prices".* FROM "prices"[0m
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.2ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 10]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 11]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 12]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 13]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 14]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+Completed 200 OK in 14ms (Views: 11.9ms | ActiveRecord: 1.0ms | Allocations: 5320)
+
+
+Started GET "/prices" for ::1 at 2021-05-13 12:31:06 -0700
+Processing by PricesController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mPrice Load (0.1ms)[0m  [1m[34mSELECT "prices".* FROM "prices"[0m
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 10]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 11]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 12]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 13]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 14]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+Completed 200 OK in 8ms (Views: 7.7ms | ActiveRecord: 0.8ms | Allocations: 5900)
+
+
+Started GET "/prices" for ::1 at 2021-05-13 12:35:12 -0700
+Processing by PricesController#index as */*
+  [1m[36mPrice Load (0.1ms)[0m  [1m[34mSELECT "prices".* FROM "prices"[0m
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 10]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.2ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 11]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.2ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 12]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.2ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 13]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 14]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+Completed 200 OK in 26ms (Views: 24.8ms | ActiveRecord: 0.8ms | Allocations: 5313)
+
+
+Started GET "/prices" for ::1 at 2021-05-13 12:35:23 -0700
+Processing by PricesController#index as */*
+  [1m[36mPrice Load (0.1ms)[0m  [1m[34mSELECT "prices".* FROM "prices"[0m
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 10]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 11]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 12]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.2ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 13]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 14]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.7ms | Allocations: 5312)
+
+
+Started PATCH "/prices/10" for ::1 at 2021-05-13 12:58:53 -0700
+Processing by PricesController#update as JSON
+  Parameters: {"price"=>{"description"=>"Clean room"}, "id"=>"10"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/prices_controller.rb:17:in `update'
+  [1m[36mPrice Load (0.1ms)[0m  [1m[34mSELECT "prices".* FROM "prices" WHERE "prices"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/prices_controller.rb:17:in `update'
+  [1m[36mAction Load (0.2ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 10]]
+  ↳ app/controllers/prices_controller.rb:19:in `update'
+Completed 200 OK in 5ms (Views: 1.5ms | ActiveRecord: 0.7ms | Allocations: 2452)
+
+
+Started GET "/prices" for ::1 at 2021-05-13 13:18:01 -0700
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PricesController#index as */*
+  [1m[36mPrice Load (0.1ms)[0m  [1m[34mSELECT "prices".* FROM "prices"[0m
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.2ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 10]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.3ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 11]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 12]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 13]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 14]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+Completed 200 OK in 39ms (Views: 31.6ms | ActiveRecord: 3.4ms | Allocations: 17898)
+
+
+Started PATCH "/prices/10" for ::1 at 2021-05-13 13:18:38 -0700
+Processing by PricesController#update as JSON
+  Parameters: {"price"=>{"description"=>"Clean room22"}, "id"=>"10"}
+  [1m[36mPrice Load (0.2ms)[0m  [1m[34mSELECT "prices".* FROM "prices" WHERE "prices"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/prices_controller.rb:17:in `update'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/prices_controller.rb:18:in `update'
+  [1m[36mPrice Update (0.9ms)[0m  [1m[33mUPDATE "prices" SET "description" = ?, "updated_at" = ? WHERE "prices"."id" = ?[0m  [["description", "Clean room22"], ["updated_at", "2021-05-13 20:18:38.859043"], ["id", 10]]
+  ↳ app/controllers/prices_controller.rb:18:in `update'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/prices_controller.rb:18:in `update'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 10]]
+  ↳ app/controllers/prices_controller.rb:19:in `update'
+Completed 200 OK in 10ms (Views: 1.6ms | ActiveRecord: 2.9ms | Allocations: 5957)
+
+
+Started POST "/actions" for ::1 at 2021-05-13 13:18:56 -0700
+Processing by ActionsController#create as JSON
+  Parameters: {"new_action"=>{"timestamp"=>"2021-05-13T20:18:56.036Z", "price_id"=>10}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mPrice Load (0.2ms)[0m  [1m[34mSELECT "prices".* FROM "prices" WHERE "prices"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mAction Create (0.2ms)[0m  [1m[32mINSERT INTO "actions" ("price_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["price_id", 10], ["timestamp", "2021-05-13 20:18:56.036000"], ["created_at", "2021-05-13 20:18:56.097931"], ["updated_at", "2021-05-13 20:18:56.097931"]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+Completed 200 OK in 15ms (Views: 0.3ms | ActiveRecord: 3.9ms | Allocations: 4767)
+
+
+Started DELETE "/actions/undefined" for ::1 at 2021-05-13 13:19:07 -0700
+Processing by ActionsController#destroy as JSON
+  Parameters: {"id"=>"undefined"}
+  [1m[36mAction Load (0.5ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:13:in `destroy'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.5ms | Allocations: 994)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/actions_controller.rb:14:in `destroy'
+Started POST "/actions" for ::1 at 2021-05-13 13:19:36 -0700
+Processing by ActionsController#create as JSON
+  Parameters: {"new_action"=>{"timestamp"=>"2021-05-13T20:19:36.547Z", "price_id"=>13}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mPrice Load (0.3ms)[0m  [1m[34mSELECT "prices".* FROM "prices" WHERE "prices"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mAction Create (0.4ms)[0m  [1m[32mINSERT INTO "actions" ("price_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["price_id", 13], ["timestamp", "2021-05-13 20:19:36.547000"], ["created_at", "2021-05-13 20:19:36.590113"], ["updated_at", "2021-05-13 20:19:36.590113"]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+Completed 200 OK in 13ms (Views: 0.2ms | ActiveRecord: 3.9ms | Allocations: 3892)
+
+
+Started POST "/actions" for ::1 at 2021-05-13 13:19:41 -0700
+Processing by ActionsController#create as JSON
+  Parameters: {"new_action"=>{"timestamp"=>"2021-05-13T20:19:41.914Z", "price_id"=>10}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mPrice Load (1.2ms)[0m  [1m[34mSELECT "prices".* FROM "prices" WHERE "prices"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mAction Create (0.4ms)[0m  [1m[32mINSERT INTO "actions" ("price_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["price_id", 10], ["timestamp", "2021-05-13 20:19:41.914000"], ["created_at", "2021-05-13 20:19:41.964951"], ["updated_at", "2021-05-13 20:19:41.964951"]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+Completed 200 OK in 21ms (Views: 0.2ms | ActiveRecord: 5.3ms | Allocations: 4204)
+
+
+Started POST "/actions" for ::1 at 2021-05-13 13:19:43 -0700
+Processing by ActionsController#create as JSON
+  Parameters: {"new_action"=>{"timestamp"=>"2021-05-13T20:19:43.053Z", "price_id"=>10}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mPrice Load (0.1ms)[0m  [1m[34mSELECT "prices".* FROM "prices" WHERE "prices"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mAction Create (0.2ms)[0m  [1m[32mINSERT INTO "actions" ("price_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["price_id", 10], ["timestamp", "2021-05-13 20:19:43.053000"], ["created_at", "2021-05-13 20:19:43.092798"], ["updated_at", "2021-05-13 20:19:43.092798"]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 2.6ms | Allocations: 4294)
+
+
+Started POST "/actions" for ::1 at 2021-05-13 13:19:43 -0700
+Processing by ActionsController#create as JSON
+  Parameters: {"new_action"=>{"timestamp"=>"2021-05-13T20:19:43.691Z", "price_id"=>10}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mPrice Load (0.2ms)[0m  [1m[34mSELECT "prices".* FROM "prices" WHERE "prices"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mAction Create (0.3ms)[0m  [1m[32mINSERT INTO "actions" ("price_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["price_id", 10], ["timestamp", "2021-05-13 20:19:43.691000"], ["created_at", "2021-05-13 20:19:43.739139"], ["updated_at", "2021-05-13 20:19:43.739139"]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+Completed 200 OK in 13ms (Views: 0.6ms | ActiveRecord: 3.5ms | Allocations: 4931)
+
+
+Started POST "/actions" for ::1 at 2021-05-13 13:20:11 -0700
+Processing by ActionsController#create as JSON
+  Parameters: {"new_action"=>{"timestamp"=>"2021-05-13T20:20:11.039Z", "price_id"=>13}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mPrice Load (0.1ms)[0m  [1m[34mSELECT "prices".* FROM "prices" WHERE "prices"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mAction Create (0.2ms)[0m  [1m[32mINSERT INTO "actions" ("price_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["price_id", 13], ["timestamp", "2021-05-13 20:20:11.039000"], ["created_at", "2021-05-13 20:20:11.093941"], ["updated_at", "2021-05-13 20:20:11.093941"]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 3.0ms | Allocations: 4925)
+
+
+Started POST "/actions" for ::1 at 2021-05-13 13:20:12 -0700
+Processing by ActionsController#create as JSON
+  Parameters: {"new_action"=>{"timestamp"=>"2021-05-13T20:20:12.134Z", "price_id"=>13}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mPrice Load (0.1ms)[0m  [1m[34mSELECT "prices".* FROM "prices" WHERE "prices"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mAction Create (0.2ms)[0m  [1m[32mINSERT INTO "actions" ("price_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["price_id", 13], ["timestamp", "2021-05-13 20:20:12.134000"], ["created_at", "2021-05-13 20:20:12.178768"], ["updated_at", "2021-05-13 20:20:12.178768"]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+Completed 200 OK in 13ms (Views: 0.8ms | ActiveRecord: 4.0ms | Allocations: 4244)
+
+
+Started POST "/prices" for ::1 at 2021-05-13 13:21:04 -0700
+Processing by PricesController#create as JSON
+  Parameters: {"price"=>{"description"=>"Go to sleep early", "price"=>"2"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/prices_controller.rb:9:in `create'
+  [1m[36mPrice Create (0.4ms)[0m  [1m[32mINSERT INTO "prices" ("description", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["description", "Go to sleep early"], ["price", 2.0], ["created_at", "2021-05-13 20:21:04.148154"], ["updated_at", "2021-05-13 20:21:04.148154"]]
+  ↳ app/controllers/prices_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/prices_controller.rb:9:in `create'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 15]]
+  ↳ app/controllers/prices_controller.rb:10:in `create'
+Completed 200 OK in 13ms (Views: 1.6ms | ActiveRecord: 3.7ms | Allocations: 4750)
+
+
+Started POST "/actions" for ::1 at 2021-05-13 13:21:09 -0700
+Processing by ActionsController#create as JSON
+  Parameters: {"new_action"=>{"timestamp"=>"2021-05-13T20:21:09.225Z", "price_id"=>15}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mPrice Load (0.6ms)[0m  [1m[34mSELECT "prices".* FROM "prices" WHERE "prices"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mAction Create (1.2ms)[0m  [1m[32mINSERT INTO "actions" ("price_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["price_id", 15], ["timestamp", "2021-05-13 20:21:09.225000"], ["created_at", "2021-05-13 20:21:09.284350"], ["updated_at", "2021-05-13 20:21:09.284350"]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+Completed 200 OK in 26ms (Views: 0.2ms | ActiveRecord: 6.1ms | Allocations: 4931)
+
+
+Started DELETE "/actions/15" for ::1 at 2021-05-13 13:21:11 -0700
+Processing by ActionsController#destroy as JSON
+  Parameters: {"id"=>"15"}
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:13:in `destroy'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/actions_controller.rb:14:in `destroy'
+  [1m[36mAction Destroy (0.2ms)[0m  [1m[31mDELETE FROM "actions" WHERE "actions"."id" = ?[0m  [["id", 15]]
+  ↳ app/controllers/actions_controller.rb:14:in `destroy'
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/actions_controller.rb:14:in `destroy'
+Completed 200 OK in 7ms (Views: 0.5ms | ActiveRecord: 2.4ms | Allocations: 3363)
+
+
+Started DELETE "/actions/16" for ::1 at 2021-05-13 13:21:11 -0700
+Processing by ActionsController#destroy as JSON
+  Parameters: {"id"=>"16"}
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:13:in `destroy'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/actions_controller.rb:14:in `destroy'
+  [1m[36mAction Destroy (0.7ms)[0m  [1m[31mDELETE FROM "actions" WHERE "actions"."id" = ?[0m  [["id", 16]]
+  ↳ app/controllers/actions_controller.rb:14:in `destroy'
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/actions_controller.rb:14:in `destroy'
+Completed 200 OK in 25ms (Views: 0.3ms | ActiveRecord: 7.6ms | Allocations: 3381)
+
+
+Started DELETE "/actions/17" for ::1 at 2021-05-13 13:21:11 -0700
+Processing by ActionsController#destroy as JSON
+  Parameters: {"id"=>"17"}
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:13:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/actions_controller.rb:14:in `destroy'
+  [1m[36mAction Destroy (0.3ms)[0m  [1m[31mDELETE FROM "actions" WHERE "actions"."id" = ?[0m  [["id", 17]]
+  ↳ app/controllers/actions_controller.rb:14:in `destroy'
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/actions_controller.rb:14:in `destroy'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 3.5ms | Allocations: 4044)
+
+
+Started DELETE "/actions/18" for ::1 at 2021-05-13 13:21:12 -0700
+Processing by ActionsController#destroy as JSON
+  Parameters: {"id"=>"18"}
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:13:in `destroy'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/actions_controller.rb:14:in `destroy'
+  [1m[36mAction Destroy (0.2ms)[0m  [1m[31mDELETE FROM "actions" WHERE "actions"."id" = ?[0m  [["id", 18]]
+  ↳ app/controllers/actions_controller.rb:14:in `destroy'
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/actions_controller.rb:14:in `destroy'
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 2.6ms | Allocations: 4046)
+
+
+Started DELETE "/actions/undefined" for ::1 at 2021-05-13 13:21:13 -0700
+Processing by ActionsController#destroy as JSON
+  Parameters: {"id"=>"undefined"}
+  [1m[36mAction Load (0.2ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:13:in `destroy'
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.2ms | Allocations: 858)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/actions_controller.rb:14:in `destroy'
+Started DELETE "/actions/20" for ::1 at 2021-05-13 13:21:15 -0700
+Processing by ActionsController#destroy as JSON
+  Parameters: {"id"=>"20"}
+  [1m[36mAction Load (0.2ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:13:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/actions_controller.rb:14:in `destroy'
+  [1m[36mAction Destroy (3.7ms)[0m  [1m[31mDELETE FROM "actions" WHERE "actions"."id" = ?[0m  [["id", 20]]
+  ↳ app/controllers/actions_controller.rb:14:in `destroy'
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/actions_controller.rb:14:in `destroy'
+Completed 200 OK in 27ms (Views: 0.2ms | ActiveRecord: 8.6ms | Allocations: 4043)
+
+
+Started DELETE "/actions/undefined" for ::1 at 2021-05-13 13:21:16 -0700
+Processing by ActionsController#destroy as JSON
+  Parameters: {"id"=>"undefined"}
+  [1m[36mAction Load (0.2ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:13:in `destroy'
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.2ms | Allocations: 857)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/actions_controller.rb:14:in `destroy'
+Started POST "/actions" for ::1 at 2021-05-13 13:21:18 -0700
+Processing by ActionsController#create as JSON
+  Parameters: {"new_action"=>{"timestamp"=>"2021-05-13T20:21:18.282Z", "price_id"=>15}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mPrice Load (0.1ms)[0m  [1m[34mSELECT "prices".* FROM "prices" WHERE "prices"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mAction Create (0.2ms)[0m  [1m[32mINSERT INTO "actions" ("price_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["price_id", 15], ["timestamp", "2021-05-13 20:21:18.282000"], ["created_at", "2021-05-13 20:21:18.323071"], ["updated_at", "2021-05-13 20:21:18.323071"]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 2.8ms | Allocations: 4924)
+
+
+Started DELETE "/actions/undefined" for ::1 at 2021-05-13 13:21:20 -0700
+Processing by ActionsController#destroy as JSON
+  Parameters: {"id"=>"undefined"}
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:13:in `destroy'
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.1ms | Allocations: 857)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/actions_controller.rb:14:in `destroy'
+Started PATCH "/prices/15" for ::1 at 2021-05-13 13:21:29 -0700
+Processing by PricesController#update as JSON
+  Parameters: {"price"=>{"description"=>"Go to sleep early"}, "id"=>"15"}
+  [1m[36mPrice Load (0.3ms)[0m  [1m[34mSELECT "prices".* FROM "prices" WHERE "prices"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/prices_controller.rb:17:in `update'
+  [1m[36mAction Load (0.2ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 15]]
+  ↳ app/controllers/prices_controller.rb:19:in `update'
+Completed 200 OK in 7ms (Views: 2.5ms | ActiveRecord: 0.5ms | Allocations: 1596)
+
+
+Started POST "/actions" for ::1 at 2021-05-13 13:21:33 -0700
+Processing by ActionsController#create as JSON
+  Parameters: {"new_action"=>{"timestamp"=>"2021-05-13T20:21:33.502Z", "price_id"=>15}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mPrice Load (0.1ms)[0m  [1m[34mSELECT "prices".* FROM "prices" WHERE "prices"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mAction Create (0.2ms)[0m  [1m[32mINSERT INTO "actions" ("price_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["price_id", 15], ["timestamp", "2021-05-13 20:21:33.502000"], ["created_at", "2021-05-13 20:21:33.540747"], ["updated_at", "2021-05-13 20:21:33.540747"]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 2.9ms | Allocations: 4925)
+
+
+Started POST "/actions" for ::1 at 2021-05-13 13:21:34 -0700
+Processing by ActionsController#create as JSON
+  Parameters: {"new_action"=>{"timestamp"=>"2021-05-13T20:21:34.357Z", "price_id"=>15}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mPrice Load (0.1ms)[0m  [1m[34mSELECT "prices".* FROM "prices" WHERE "prices"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mAction Create (0.4ms)[0m  [1m[32mINSERT INTO "actions" ("price_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["price_id", 15], ["timestamp", "2021-05-13 20:21:34.357000"], ["created_at", "2021-05-13 20:21:34.395001"], ["updated_at", "2021-05-13 20:21:34.395001"]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 4.3ms | Allocations: 4244)
+
+
+Started POST "/prices" for ::1 at 2021-05-13 13:21:44 -0700
+Processing by PricesController#create as JSON
+  Parameters: {"price"=>{"description"=>"tets", "price"=>"-1"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/prices_controller.rb:9:in `create'
+  [1m[36mPrice Create (0.2ms)[0m  [1m[32mINSERT INTO "prices" ("description", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["description", "tets"], ["price", -1.0], ["created_at", "2021-05-13 20:21:44.891912"], ["updated_at", "2021-05-13 20:21:44.891912"]]
+  ↳ app/controllers/prices_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/prices_controller.rb:9:in `create'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 16]]
+  ↳ app/controllers/prices_controller.rb:10:in `create'
+Completed 200 OK in 7ms (Views: 1.4ms | ActiveRecord: 2.4ms | Allocations: 4721)
+
+
+Started POST "/actions" for ::1 at 2021-05-13 13:21:46 -0700
+Processing by ActionsController#create as JSON
+  Parameters: {"new_action"=>{"timestamp"=>"2021-05-13T20:21:46.720Z", "price_id"=>16}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mPrice Load (0.3ms)[0m  [1m[34mSELECT "prices".* FROM "prices" WHERE "prices"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mAction Create (12.8ms)[0m  [1m[32mINSERT INTO "actions" ("price_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["price_id", 16], ["timestamp", "2021-05-13 20:21:46.720000"], ["created_at", "2021-05-13 20:21:46.768085"], ["updated_at", "2021-05-13 20:21:46.768085"]]
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/actions_controller.rb:5:in `create'
+Completed 200 OK in 31ms (Views: 0.2ms | ActiveRecord: 16.4ms | Allocations: 4926)
+
+
+Started DELETE "/actions/undefined" for ::1 at 2021-05-13 13:21:48 -0700
+Processing by ActionsController#destroy as JSON
+  Parameters: {"id"=>"undefined"}
+  [1m[36mAction Load (0.2ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:13:in `destroy'
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.2ms | Allocations: 857)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/actions_controller.rb:14:in `destroy'
+Started DELETE "/actions/undefined" for ::1 at 2021-05-13 13:21:49 -0700
+Processing by ActionsController#destroy as JSON
+  Parameters: {"id"=>"undefined"}
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:13:in `destroy'
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.1ms | Allocations: 856)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/actions_controller.rb:14:in `destroy'
+Started DELETE "/actions/undefined" for ::1 at 2021-05-13 13:21:51 -0700
+Processing by ActionsController#destroy as JSON
+  Parameters: {"id"=>"undefined"}
+  [1m[36mAction Load (0.5ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/actions_controller.rb:13:in `destroy'
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.5ms | Allocations: 855)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/actions_controller.rb:14:in `destroy'
+Started DELETE "/prices/16" for ::1 at 2021-05-13 13:21:54 -0700
+Processing by PricesController#destroy as JSON
+  Parameters: {"id"=>"16", "price"=>{}}
+  [1m[36mPrice Load (0.1ms)[0m  [1m[34mSELECT "prices".* FROM "prices" WHERE "prices"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/prices_controller.rb:23:in `destroy'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/prices_controller.rb:24:in `destroy'
+  [1m[36mAction Load (0.7ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 16]]
+  ↳ app/controllers/prices_controller.rb:24:in `destroy'
+  [1m[36mAction Destroy (0.6ms)[0m  [1m[31mDELETE FROM "actions" WHERE "actions"."id" = ?[0m  [["id", 34]]
+  ↳ app/controllers/prices_controller.rb:24:in `destroy'
+  [1m[36mPrice Destroy (0.3ms)[0m  [1m[31mDELETE FROM "prices" WHERE "prices"."id" = ?[0m  [["id", 16]]
+  ↳ app/controllers/prices_controller.rb:24:in `destroy'
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/prices_controller.rb:24:in `destroy'
+Completed 200 OK in 30ms (Views: 0.1ms | ActiveRecord: 5.3ms | Allocations: 5208)
+
+
+Started POST "/prices" for ::1 at 2021-05-13 13:22:01 -0700
+Processing by PricesController#create as JSON
+  Parameters: {"price"=>{"description"=>"", "price"=>"0"}}
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 3451)
+
+
+Started GET "/prices" for ::1 at 2021-05-13 19:36:30 -0700
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PricesController#index as */*
+  [1m[36mPrice Load (0.1ms)[0m  [1m[34mSELECT "prices".* FROM "prices"[0m
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 10]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 11]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 12]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 13]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 14]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 15]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+Completed 200 OK in 24ms (Views: 16.8ms | ActiveRecord: 1.6ms | Allocations: 19305)
+
+
+Started GET "/prices" for ::1 at 2021-05-13 19:40:41 -0700
+Processing by PricesController#index as */*
+  [1m[36mPrice Load (0.7ms)[0m  [1m[34mSELECT "prices".* FROM "prices"[0m
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.2ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 10]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.2ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 11]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.2ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 12]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 13]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.4ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 14]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.2ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 15]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+Completed 200 OK in 25ms (Views: 21.7ms | ActiveRecord: 1.9ms | Allocations: 6740)
+
+
+Started GET "/prices" for ::1 at 2021-05-13 19:40:57 -0700
+Processing by PricesController#index as */*
+  [1m[36mPrice Load (0.1ms)[0m  [1m[34mSELECT "prices".* FROM "prices"[0m
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.2ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 10]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 11]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.2ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 12]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 13]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.2ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 14]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 15]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+Completed 200 OK in 19ms (Views: 17.7ms | ActiveRecord: 1.1ms | Allocations: 6740)
+
+
+Started GET "/prices" for ::1 at 2021-05-13 19:53:00 -0700
+Processing by PricesController#index as */*
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mPrice Load (0.5ms)[0m  [1m[34mSELECT "prices".* FROM "prices"[0m
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.2ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 10]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 11]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 12]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.2ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 13]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.3ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 14]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.6ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 15]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+Completed 200 OK in 28ms (Views: 27.7ms | ActiveRecord: 2.4ms | Allocations: 7311)
+
+
+Started GET "/prices" for ::1 at 2021-05-13 20:00:32 -0700
+Processing by PricesController#index as */*
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mPrice Load (0.1ms)[0m  [1m[34mSELECT "prices".* FROM "prices"[0m
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 10]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 11]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 12]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 13]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.1ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 14]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+  [1m[36mAction Load (0.4ms)[0m  [1m[34mSELECT "actions".* FROM "actions" WHERE "actions"."price_id" = ?[0m  [["price_id", 15]]
+  ↳ app/controllers/prices_controller.rb:4:in `index'
+Completed 200 OK in 13ms (Views: 12.9ms | ActiveRecord: 1.2ms | Allocations: 7312)
+
+

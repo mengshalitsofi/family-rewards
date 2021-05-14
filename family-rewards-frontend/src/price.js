@@ -2,13 +2,15 @@ class Price {
 
     static allPrices = []
     static balance = 0
-
+    
+  
+    // creates a new price object, adds it to the list of allPrices, and updates the balance
     constructor(price) {
         this.description = price.description
         this.price = parseInt(price.price, 10)
         this.id = price.id
-        this.actions = price.actions.map(action => new Action(action))
-        Price.allPrices.push(this)
+        this.actions = price.actions.map(action => new Action(action)) // deserialize Action, add to list
+        Price.allPrices.push(this) // add to the static list of all prices
         Price.balance += this.price * this.actions.length
     }
   
@@ -19,20 +21,24 @@ class Price {
     }
 
     renderPrice() {
-      let container = document.getElementById('priceContainer')
+      let container = document.getElementById('priceContainer') // get reference to the existing container
 
+      // create a div to hold all the price information and add it to the container
       let div = document.createElement("div")
       div.id = "div_" + this.id;
       container.appendChild(div);
 
+      // create the description piece and add it to the div
       let row = document.createElement("span")
       row.className = "priceRow"
       row.id = "row_" + this.id
       row.innerHTML = this.description + "  "
       div.appendChild(row);
 
+      // create the hearts piece and add it to the div
       div.appendChild(createHeartsElement(this.price))
       
+      // create the Edit button and add it to the div
       let editCell = document.createElement("span")
       editCell.id = "edit_" + this.id
       editCell.className = "delete"
@@ -40,6 +46,7 @@ class Price {
       editCell.addEventListener('click', this.showPrice.bind(this))
       div.appendChild(editCell)
 
+      // create the Delete button and add it to the div
       let deleteCell = document.createElement("span")
       deleteCell.id = "delete_" + this.id
       deleteCell.className = "delete"
@@ -47,18 +54,21 @@ class Price {
       deleteCell.addEventListener('click', this.deletePrice.bind(this))
       div.appendChild(deleteCell)
 
+      // create the + button and add it to the div
       let addActionCell = document.createElement("span")
       addActionCell.id = "addAction_" + this.id      
       addActionCell.innerText = "  (+)"
       addActionCell.addEventListener('click', this.submitAction.bind(this))
       div.appendChild(addActionCell)
       
+      // create the list for all the actions
       const ul = document.createElement("ul")
       ul.id = "ul_" + this.id
       div.appendChild(ul)
 
+      // add every action to the list
       for (let action of this.actions) {
-        ul.appendChild(action.createElement())
+        ul.appendChild(action.createElement()) //action.js
       }      
     }
   
@@ -187,6 +197,7 @@ class Price {
       }        
     }
 
+    // render all prices one by one, and then render the balance
     static renderPrices() {
       for (let price of this.allPrices) {
           price.renderPrice()
@@ -194,23 +205,27 @@ class Price {
       Price.renderBalance();
     }
   
+    // Get all the prices and actions and add to the DOM
     static fetchPrices() {
-      fetch("http://localhost:3000/prices")
-      .then(r => r.json())
+      fetch("http://localhost:3000/prices") // GET method to the backend to get all prices and actions
+      .then(r => r.json()) // Convert to a JSON object
       .then(prices => {
-        if (!!prices) {
-          for (let price of prices) {
-            let newPrice = new Price(price)
+       
+        if (!!prices) { // Check that it exists
+          for (let price of prices) { // Go over the prices array one by one
+            let newPrice = new Price(price) // Create a new price (which will add it to the AllPrices array)
           }
-          this.renderPrices()
+          this.renderPrices() // Render all prices in the DOM
         } else {
-          throw new Error(prices)
+          throw new Error("error getting prices") // error handling, couldn't get an object
         }
   
-      }).catch(err => alert(err))
+      }).catch(err => alert(err)) // error handling
+     
     }
   
-    static createPrice() {
+    // submit button for the "Add New Behavior" form
+    static createPrice(event) {
       event.preventDefault()
       const description = document.getElementById('priceDescription').value
       const price = document.getElementById('pricePrice').value
@@ -220,17 +235,17 @@ class Price {
           "Content-Type": "application/json",
           "Accept": "application/json"
         },
-        body: JSON.stringify({price: {description, price}})
+        body: JSON.stringify({price: {description, price}}) // serialize the price object to a string
       }
   
       document.getElementById('priceDescription').value = ""
   
-      fetch("http://localhost:3000/prices", options)
+      fetch("http://localhost:3000/prices", options) // POST the new behavior (price) to the backend
       .then(r => r.json())
       .then(priceObj => {
-        if (priceObj.id) {
-          let newPrice = new Price(priceObj)
-          newPrice.renderPrice()
+        if (priceObj.id) { // check if the item was created
+          let newPrice = new Price(priceObj) // create a new price object
+          newPrice.renderPrice() // render the new price
         } else {
           throw new Error(priceObj.message)
         }
