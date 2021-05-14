@@ -165,11 +165,12 @@ class Price {
         await response.json()
 
         const ul = document.getElementById("ul_" + this.id);
-        ul.appendChild(new Action(action.new_action).createElement())
+        const actionObj = new Action(action.new_action);
+        ul.appendChild(actionObj.createElement())
 
         // Update balance
         Price.balance += this.price;
-        this.actions.push(action);
+        this.actions.push(actionObj);
         Price.renderBalance();
       } catch(err) {
         alert(err)

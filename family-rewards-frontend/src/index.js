@@ -4,6 +4,7 @@ form.addEventListener('submit', Price.createPrice)
 const sort = document.getElementById("sortbutton")
 sort.addEventListener('click', sortPrice)
 
+
 function createHeartsElement(amount) {
     let hearts = document.createElement("span")
     hearts.className = amount < 0 ? "pricePriceNegative" : "pricePricePositive"
