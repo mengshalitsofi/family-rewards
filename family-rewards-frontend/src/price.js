@@ -11,7 +11,9 @@ class Price {
         this.id = price.id
         this.actions = price.actions.map(action => new Action(action)) // deserialize Action, add to list
         Price.allPrices.push(this) // add to the static list of all prices
-        Price.balance += this.price * this.actions.length
+        if (!isNaN(this.price) && !isNaN(this.actions.length)) { // update the balance only if we have a price and actions
+          Price.balance += this.price * this.actions.length
+        }        
     }
   
     static renderBalance() {
@@ -46,6 +48,7 @@ class Price {
       editCell.addEventListener('click', this.showPrice.bind(this))
       div.appendChild(editCell)
 
+      
       // create the Delete button and add it to the div
       let deleteCell = document.createElement("span")
       deleteCell.id = "delete_" + this.id
@@ -142,6 +145,9 @@ class Price {
           alert(err)
         }        
     }
+
+
+
 
     async submitAction(){
       event.preventDefault()
